@@ -9,7 +9,7 @@ on:
 
 jobs:
   DifyWorkflow:
-    if: github.event.schedule == '0 22 * * 0,4' 
+    if: github.event.schedule == '0 22 * * 0,4' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     env:
       DIFY_TOKENS: ${{ secrets.DIFY_TOKENS }}
@@ -35,7 +35,7 @@ jobs:
           yarn workflowDify
 
   DifyWorkflowAlternate:
-    if: github.event.schedule == '20 20 * * *' || github.event_name == 'workflow_dispatch'
+    if: github.event.schedule == '20 20 * * *' 
     runs-on: ubuntu-latest
     env:
       DIFY_TOKENS: ${{ secrets.DIFY_TOKENS_ALTERNATE }}
